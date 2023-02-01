@@ -615,7 +615,7 @@ p {
 }
 
 .header__menu_active {
-		opacity: 1;
+		/*opacity: 1;*/
 		z-index: 1;
 }
 

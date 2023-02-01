@@ -14,7 +14,7 @@ const openBurgerMenu = () => {
 		if (opacity < 0.9) {
 			setTimeout(changeOpacity, 100);
 		}
-	}, 100);
+	});
 };
 
 const closeBurgerMenu = () => {
@@ -25,7 +25,7 @@ const closeBurgerMenu = () => {
 		if (opacity >= 0) {
 			setTimeout(changeOpacity, 100);
 		}
-	}, 100);
+	});
 };
 
 // Toggle the "header__menu_active"

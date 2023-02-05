@@ -105,7 +105,7 @@ reservationPeople.addEventListener("change", ({target}) => {
 	reservationDataText.textContent = textArray[0];
 	reservationDataText.textContent += `, ${target.value} ${renderPhrase(+target.value)}`;
 
-	//total price  459 590₽
+	//total price
 	reservationPriceText.textContent = "";
 	const date = reservationDate.value;
 	const currentData = data.filter((item) => item.date === date)[0];

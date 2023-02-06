@@ -42,15 +42,33 @@ form.addEventListener("submit", (e) => {
 		callback(err, data) {
 			if (err) {
 				console.warn(err, data);
-				form.textContent = err;
+				form.textContent = "";
+				const h2 = document.createElement("h2");
+				const p = document.createElement("p");
+				const btn = document.createElement("button");
+				h2.textContent = "Упс... Что-то пошло не так";
+				p.textContent = "Не удалось отправить заявку. Пожалуйста, повторите отправку еще раз";
+				btn.className = "button reservation__button";
+				btn.textContent = "Забронировать";
+				form.append(h2, p, btn);
+				btn.addEventListener("click", () => {
+					location.reload();
+				});
+				return;
 			}
-			formInfo.textContent = `Заявка успешно отправлена, номер заявки ${data.id}`;
+			form.textContent = "";
+			const h2 = document.createElement("h2");
+			const p = document.createElement("p");
+			const img = document.createElement("img");
+			h2.textContent = "Ваша заявка успешно отправлена";
+			p.textContent = "Наши менеджеры свяжутся с вами в течении 3-х рабочих дней";
+			img.src = "/img/Ok.svg";
+			form.append(h2, p, img);
 		},
 		headers: {
 			"Content-Type": "application/json",
 		},
 	});
-	form.reset();
 });
 
 footerForm.addEventListener("submit", (e) => {

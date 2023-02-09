@@ -1,3 +1,5 @@
+import showModal from "./modal.js";
+
 const URL = "https://jsonplaceholder.typicode.com/posts";
 const form = document.querySelector(".reservation__form");
 const footerForm = document.querySelector(".footer__form");
@@ -5,6 +7,7 @@ const formInfo = form.querySelector(".reservation__info");
 const reservationName = form.querySelector("#reservation__name");
 const reservationPhone = form.querySelector("#reservation__phone");
 const footerInput = footerForm.querySelector(".footer__input");
+const reservationPriceText = document.querySelector(".reservation__price");
 
 reservationName.setAttribute("name", "formName");
 reservationPhone.setAttribute("name", "formPhone");
@@ -20,55 +23,38 @@ const fetchRequest = async (url, {method = "GET", callback, body, headers}) => {
 		const response = await fetch(url, options);
 		if (response.ok) {
 			const data = await response.json();
-			if (callback) callback(null, data);
+			if (callback) return callback(null, data);
 			return;
 		}
 		throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
 	} catch (err) {
-		callback(err);
+		return callback(err);
 	}
 };
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
 	e.preventDefault();
-	fetchRequest(URL, {
+	const result = await fetchRequest(URL, {
 		method: "POST",
 		body: {
 			date: form.dates.value,
 			people: form.people.value,
 			name: form.formName.value,
 			phone: form.formPhone.value,
+			price: reservationPriceText.textContent,
 		},
 		callback(err, data) {
 			if (err) {
 				console.warn(err, data);
-				form.textContent = "";
-				const h2 = document.createElement("h2");
-				const p = document.createElement("p");
-				const btn = document.createElement("button");
-				h2.textContent = "Упс... Что-то пошло не так";
-				p.textContent = "Не удалось отправить заявку. Пожалуйста, повторите отправку еще раз";
-				btn.className = "button reservation__button";
-				btn.textContent = "Забронировать";
-				form.append(h2, p, btn);
-				btn.addEventListener("click", () => {
-					location.reload();
-				});
 				return;
 			}
-			form.textContent = "";
-			const h2 = document.createElement("h2");
-			const p = document.createElement("p");
-			const img = document.createElement("img");
-			h2.textContent = "Ваша заявка успешно отправлена";
-			p.textContent = "Наши менеджеры свяжутся с вами в течении 3-х рабочих дней";
-			img.src = "/img/Ok.svg";
-			form.append(h2, p, img);
+			return data;
 		},
 		headers: {
 			"Content-Type": "application/json",
 		},
 	});
+	showModal(result);
 });
 
 footerForm.addEventListener("submit", (e) => {

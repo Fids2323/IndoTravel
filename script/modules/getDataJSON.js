@@ -1,3 +1,6 @@
+import renderPhrase from "./utils/renderPhrase.js";
+import renderDate from "./utils/renderDate.js";
+
 const tourSelect = document.querySelector("#tour__date");
 const tourPeople = document.querySelector("#tour__people");
 const reservationDate = document.querySelector("#reservation__date");
@@ -70,16 +73,6 @@ const renderOption = (selectDate, selectPeople, className, titleDate, titlePeopl
 	});
 };
 
-const renderPhrase = (number) => {
-	const lastOne = Number(number.toString().slice(-1));
-	if (number > 4 && number < 15) {
-		return "человек";
-	}
-	if (lastOne === 1) return "человек";
-	if ([2, 3, 4].indexOf(lastOne) >= 0) return "человека";
-	return "человек";
-};
-
 //First block
 renderOption(tourSelect, tourPeople, "tour__option", "Выбери дату", "Количество человек");
 //Second block
@@ -89,14 +82,8 @@ renderOption(reservationDate, reservationPeople, "reservation__option", "Дат�
 //date
 reservationDate.addEventListener("change", () => {
 	reservationPriceText.textContent = "";
-	const months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 	const date = reservationDate.value;
-	const currentData = data.filter((item) => item.date === date)[0];
-	const numberDayStart = parseInt(currentData.date.substr(0, 2));
-	const numberDayEnd = parseInt(currentData.date.substr(8, 2));
-	const numberMonthStart = parseInt(currentData.date.substr(3, 2));
-	const numberMonthEnd = parseInt(currentData.date.substr(11, 2));
-	reservationDataText.textContent = `${numberDayStart} ${months[numberMonthStart - 1]} - ${numberDayEnd} ${months[numberMonthEnd - 1]},`;
+	reservationDataText.textContent = `${renderDate(date)}`;
 });
 
 reservationPeople.addEventListener("change", ({target}) => {

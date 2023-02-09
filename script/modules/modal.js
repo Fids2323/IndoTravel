@@ -2,9 +2,8 @@ import loadStyle from "./loadStyleModal.js";
 import renderPhrase from "./utils/renderPhrase.js";
 import renderDate from "./utils/renderDate.js";
 
-const showModal = async (data) => {
+const showModal = async (err, data) => {
 	await loadStyle("css/modal.css");
-	console.log(data);
 	const overlay = document.createElement("div");
 	const modal = document.createElement("div");
 	const modalTitle = document.createElement("h2");

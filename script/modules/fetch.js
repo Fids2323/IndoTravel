@@ -6,6 +6,8 @@ const footerForm = document.querySelector(".footer__form");
 const formInfo = form.querySelector(".reservation__info");
 const reservationName = form.querySelector("#reservation__name");
 const reservationPhone = form.querySelector("#reservation__phone");
+const reservationDate = form.querySelector("#reservation__date");
+const reservationPeople = form.querySelector("#reservation__people");
 const footerInput = footerForm.querySelector(".footer__input");
 const reservationPriceText = document.querySelector(".reservation__price");
 
@@ -43,18 +45,18 @@ form.addEventListener("submit", async (e) => {
 			phone: form.formPhone.value,
 			price: reservationPriceText.textContent,
 		},
-		callback(err, data) {
-			if (err) {
-				console.warn(err, data);
-				return;
-			}
-			return data;
-		},
+		callback: showModal,
 		headers: {
 			"Content-Type": "application/json",
 		},
 	});
-	showModal(result);
+	if (result) {
+		form.reset();
+		reservationName.disabled = true;
+		reservationPhone.disabled = true;
+		reservationDate.disabled = true;
+		reservationPeople.disabled = true;
+	}
 });
 
 footerForm.addEventListener("submit", (e) => {

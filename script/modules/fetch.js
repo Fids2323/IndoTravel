@@ -15,6 +15,10 @@ reservationName.setAttribute("name", "formName");
 reservationPhone.setAttribute("name", "formPhone");
 footerInput.setAttribute("name", "email");
 
+//add validation
+reservationName.setAttribute("pattern", "^[а-яА-Яs ]+$");
+reservationPhone.setAttribute("pattern", "^[0-9+]+$");
+
 const fetchRequest = async (url, {method = "GET", callback, body, headers}) => {
 	try {
 		const options = {
@@ -35,27 +39,37 @@ const fetchRequest = async (url, {method = "GET", callback, body, headers}) => {
 };
 
 form.addEventListener("submit", async (e) => {
-	e.preventDefault();
-	const result = await fetchRequest(URL, {
-		method: "POST",
-		body: {
-			date: form.dates.value,
-			people: form.people.value,
-			name: form.formName.value,
-			phone: form.formPhone.value,
-			price: reservationPriceText.textContent,
-		},
-		callback: showModal,
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
-	if (result) {
-		form.reset();
-		reservationName.disabled = true;
-		reservationPhone.disabled = true;
-		reservationDate.disabled = true;
-		reservationPeople.disabled = true;
+	const nameValue = reservationName.value.trim();
+	const words = nameValue.split(" ");
+
+	if (words.length >= 3) {
+		e.preventDefault();
+		const result = await fetchRequest(URL, {
+			method: "POST",
+			body: {
+				date: form.dates.value,
+				people: form.people.value,
+				name: form.formName.value,
+				phone: form.formPhone.value,
+				price: reservationPriceText.textContent,
+			},
+			callback: showModal,
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		if (result) {
+			form.reset();
+			reservationName.disabled = true;
+			reservationPhone.disabled = true;
+			reservationDate.disabled = true;
+			reservationPeople.disabled = true;
+		}
+		return true;
+	} else {
+		e.preventDefault();
+		alert("Please enter a name with at least three words.");
+		return false;
 	}
 });
 

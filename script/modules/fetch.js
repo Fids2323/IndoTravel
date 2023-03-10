@@ -68,7 +68,6 @@ form.addEventListener("submit", async (e) => {
 		return true;
 	} else {
 		e.preventDefault();
-		alert("Please enter a name with at least three words.");
 		return false;
 	}
 });

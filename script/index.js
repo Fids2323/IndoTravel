@@ -5,6 +5,8 @@ import "./modules/menuControl.js";
 import "./modules/fly.js";
 import "./modules/getDataJSON.js";
 import "./modules/fetch.js";
+import "./modules/form-validate.js";
+import "./modules/slider.js";
 
 const date = new Date(Date.UTC(2023, 1, 24, 20, 20));
 const init = () => {

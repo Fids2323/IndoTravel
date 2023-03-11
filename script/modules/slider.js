@@ -35,3 +35,4 @@ new Swiper(".swiper", {
 		},
 	},
 });
+console.log("dd");

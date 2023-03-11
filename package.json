@@ -1,23 +1,16 @@
 {
   "name": "indotravel",
   "version": "1.0.0",
-  "description": "",
-	"main":"index.js",
+  "description": "pet project",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-		"dev": "parcel index.html",
-		"build": "parcel build index.html",
-		"watch": "parcel index.html --open --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
-  "keywords": [],
-  "author": "",
+  "author": "Dmitry Fids",
   "license": "ISC",
   "dependencies": {
     "inputmask": "^5.0.7",
     "just-validate": "^4.2.0"
-  },
-  "devDependencies": {
-    "parcel": "^2.8.3"
   }
 }

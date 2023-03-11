@@ -1,5 +1,5 @@
-import Inputmask from "../../node_modules/inputmask/dist/inputmask.es6.js";
 import JustValidate from "../../node_modules/just-validate/dist/just-validate.es.js";
+import Inputmask from "../../node_modules/inputmask/dist/inputmask.es6.js";
 
 //Mask
 const inputTel = document.querySelector("#reservation__phone");

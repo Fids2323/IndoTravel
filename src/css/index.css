@@ -656,7 +656,7 @@ p {
 
 .hero {
 		padding: 192px 0 200px;
-		background: url("../img/hero/background.jpg") center/cover no-repeat;
+		background: url("../img/hero/background-hero.jpg") center/cover no-repeat;
 		color: #fff;
 }
 
@@ -1013,7 +1013,7 @@ p {
 .tour {
 		padding-top: 100px;
 		padding-bottom: 0;
-		background: url("../img/tour/background.jpg") center/cover no-repeat;
+		background: url("../img/tour/background-tour.jpg") center/cover no-repeat;
 		color: #fff;
 }
 
@@ -1114,7 +1114,7 @@ p {
 		height: 24px;
 		top: 38px;
 		right: 25px;
-		background: url("../img/tour/arrow.svg") center/12px 7px no-repeat;
+		background: url("../img/tour/arrow-tour.svg") center/12px 7px no-repeat;
 		cursor: pointer;
 		border-radius: 50%;
 }
@@ -1640,7 +1640,7 @@ p {
 }
 
 .reservation-arrow {
-		background: url("../img/reservation/arrow.svg") center/12px 7px no-repeat;
+		background: url("../img/reservation/arrow-reservation.svg") center/12px 7px no-repeat;
 }
 
 .reservation__input-wrap {
@@ -1735,9 +1735,9 @@ p {
 
 .footer {
 		padding: 80px 0;
-		background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.74)), url("../img/footer/background.jpg") center/cover no-repeat;
-		background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.74)), to(rgba(0, 0, 0, 0.74))), url("../img/footer/background.jpg") center/cover no-repeat;
-		background: linear-gradient(0deg, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.74)), url("../img/footer/background.jpg") center/cover no-repeat;
+		background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.74)), url("../img/footer/background-footer.jpg") center/cover no-repeat;
+		background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.74)), to(rgba(0, 0, 0, 0.74))), url("../img/footer/background-footer.jpg") center/cover no-repeat;
+		background: linear-gradient(0deg, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.74)), url("../img/footer/background-footer.jpg") center/cover no-repeat;
 		color: #fff;
 }
 
@@ -1883,7 +1883,7 @@ p {
 		width: 100px;
 		height: 62px;
 		border-radius: 8px;
-		background: url("../img/footer/arrow.svg") center/contain no-repeat;
+		background: url("../img/footer/arrow-footer.svg") center/contain no-repeat;
 }
 
 .footer__info {
